@@ -1,0 +1,86 @@
+<div class="header">
+    <img src="https://www.booknet.co.il/images/online-shopping.svg" class="img" (click)="onClickToCart()">
+    <div class="search-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmujDGMx3t2waqHg40s4hqK2YReH4BkqcXJkfUc-gqQi4nGLjnHT1p5jcpRaYc5BY7Sw&usqp=CAU" class="img">
+        <input type="text"  placeholder="Search for a book" (input)="onSearch($event)">
+    </div>
+    <div class="header-text">Book Store</div>
+    <button (click) = "onClickAddBook()" class="add-book-btn">Add Book</button>
+    <div class="link">
+        <div (click)="onClickLogOut()">Log-out</div>
+        <img src="https://vignette.wikia.nocookie.net/panzoid/images/0/01/AccountLogo.png/revision/latest?cb=20170205042726" class="img" (click)="onClickProfile()">
+    </div>
+</div>
+
+<div class="books-container">
+    <div *ngFor="let book of displayedBooks" class="book-container" (click)="onClickDescription(book)">
+        <div class="choice-btn" (click) = "onClickChoice(book, $event)">
+            <div class="point">.</div>
+            <div class="point">.</div>
+            <div class="point">.</div>
+        </div>
+        <div *ngIf="book.popUpChoice" class="pop-up-choice">
+            <div class="x" (click)="onClickClose(book,$event)">x</div>
+            <div class="option" (click)="onClickEdit(book, $event)">Edit</div>
+            <div class="option" (click)="onClickDelete(book, $event)">Delete</div>
+        </div>
+    
+        <img [src]="book.img" class="book-img">
+        <div>{{ book.name }}</div>
+        <div>{{ book.author }}</div>
+        <div>{{ book.price }}</div>
+        <button (click)="onClickAddCart(book, $event)">Add to cart</button>
+    </div>
+</div>
+
+<div *ngIf="isModalEdit" class="background">
+    <div class="edit-modal">
+        <div class="header-modal">
+            <div>Edit Book</div>
+            <button (click)="onClickEditClose()">x</button>
+        </div>
+        <form [formGroup]="form" class="edit-field">
+                <label for="img">img:</label>
+                <input type="text" id="img" formControlName= "img">
+                <label for="description">description:</label>
+                <textarea type="text" id="description" formControlName= "description"></textarea>
+                <label for="bookName">name:</label>
+                <input type="text" id="bookName" formControlName= "bookName">
+                <label for="author">author:</label>
+                <input type="text" id="author" formControlName= "author">
+                <label for="price">price:</label>
+                <input type="text" id="price" formControlName= "price">
+        </form>
+        <button (click)="onClickSaveChanges()">Save changes</button>
+    </div>
+</div>
+
+
+<div *ngIf="isModalAddBook" class="background">
+    <div class="edit-modal">
+        <div class="header-modal">
+            <div>Add Book</div>
+            <button (click)="onClickAddBookClose()">x</button>
+        </div>
+        <form [formGroup]="formAddBook" class="edit-field">
+                <label for="img">img:</label>
+                <input type="text" id="img" formControlName= "img">
+                <label for="description">description:</label>
+                <textarea type="text" id="description" formControlName= "description"></textarea>
+                <label for="bookName">name:</label>
+                <input type="text" id="bookName" formControlName= "bookName">
+                <label for="author">author:</label>
+                <input type="text" id="author" formControlName= "author">
+                <label for="price">price:</label>
+                <input type="text" id="price" formControlName= "price">
+        </form>
+        <button (click)="onClickSave()">Save</button>
+    </div>
+</div>
+
+<mat-paginator class="pagination"
+    [length]="totalItems" 
+    [pageSize]="pageSize" 
+    [pageIndex]="currentPage" 
+    (page)="pageChanged($event)">
+</mat-paginator>

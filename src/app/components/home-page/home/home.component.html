@@ -1,0 +1,34 @@
+<div class="header">
+    <img src="https://www.booknet.co.il/images/online-shopping.svg" class="img" (click)="onClickToCart()">
+    <div class="search-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmujDGMx3t2waqHg40s4hqK2YReH4BkqcXJkfUc-gqQi4nGLjnHT1p5jcpRaYc5BY7Sw&usqp=CAU" class="img">
+        <input type="text"  placeholder="Search for a book" (input)="onSearch($event)">
+    </div>
+    <div class="header-text">Book Store</div>
+    <button *ngIf="isAdminLogIn" (click) = "onClickAddBook()" class="add-book-btn">Add Book</button>
+    <div *ngIf="!isLoggedIn" class="link" (click)="onClickToLogin()">
+        Log-in/Sign-up
+        <img src="https://vignette.wikia.nocookie.net/panzoid/images/0/01/AccountLogo.png/revision/latest?cb=20170205042726" class="img">
+    </div>
+    <div *ngIf="isLoggedIn" class="link">
+        <div (click)="onClickLogOut()">Log-out</div>
+        <img src="https://vignette.wikia.nocookie.net/panzoid/images/0/01/AccountLogo.png/revision/latest?cb=20170205042726" class="img" (click)="onClickProfile()">
+    </div>
+</div>
+
+<div class="books-container">
+    <div *ngFor="let book of displayedBooks" class="book-container" (click)="onClickDescription(book)">
+        <img [src]="book.img" class="book-img">
+        <div>{{ book.name }}</div>
+        <div>{{ book.author }}</div>
+        <div>{{ book.price }}</div>
+        <button (click)="onClickAddCart(book, $event)">Add to cart</button>
+    </div>
+</div>
+
+<mat-paginator class="pagination"
+    [length]="totalItems" 
+    [pageSize]="pageSize" 
+    [pageIndex]="currentPage" 
+    (page)="pageChanged($event)">
+</mat-paginator>

@@ -1,0 +1,57 @@
+:host{
+    width: 100vw;
+    height: 100vh;
+}
+.header{
+    height: 4rem;
+    background-color: #007bffc3;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 10;
+}
+.header >:first-child{
+    margin-left: 10px;
+}
+.link{
+    font-size: 20px;
+    text-decoration: underline;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.img{
+    width: 2rem; 
+    height: 2rem; 
+    object-fit: contain;
+}
+.container{
+    margin-top: 10%;
+}
+.book-name{
+    font-size: 25px;
+    font-weight: 700;
+    color: cadetblue;
+    margin-top: 2%;
+    text-align: center;
+}
+.description{
+    font-size: 20px;
+    margin-top: 2%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+@media(max-width: 600px){
+    .container{
+        margin-top: 20%;
+    }
+}

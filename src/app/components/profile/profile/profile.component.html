@@ -1,0 +1,42 @@
+<button class="back-btn" (click)="onClickBack()">Back</button>
+<div class="container">
+    <div>Email: {{currentEmail}}</div>
+    <div>password: {{currentPassword}}</div>
+</div>
+
+<div class="container-btn">
+    <button (click)="onClickEditEmail()">Edit email</button>
+    <button (click)="onClickEditPassword()">Edit password</button>
+</div>
+
+<div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQki7VQErT_BnCdd-gL6nGoNRpdDXMFKsmtyRye8XU6jBwUWGZjbdoJ9mSGz-TGZgKUFtg&usqp=CAU" class="img" (click)="onClicDeleteAccount()">
+</div>
+
+<div class="background" *ngIf="clickEditEmail">
+    <div (click)="onClickCloseEditMail()" class="x">X</div>
+    <div class="edit-container">
+        <form [formGroup]="form" (ngSubmit) = onSubmit() class="form">
+            <div *ngIf="isFoundInUsers" class="message">this user is connacted</div>
+            <div>
+                <label for="Email">Enter new email:</label>
+                <input type="text" id = "Email" class="form-control" formControlName= "Email">
+                <div *ngIf="!this.form.get('Email')?.valid && this.form.get('Email')?.touched" class="error-message">enter new email</div>
+            </div>
+            <button type="submit" [disabled] = "!form.valid">Save email</button>
+        </form>
+    </div>
+</div>
+<div class="background" *ngIf="clickEditPassword">
+    <div (click)="onClickCloseEditPass()" class="x">X</div>
+    <div *ngIf="clickEditPassword" class="edit-container">
+        <form [formGroup]="form_pass" (ngSubmit) = onSubmitPass() class="form">
+            <div>
+                <label for="password">Enter new password:</label>
+                <input type="password" id = "password" class="form-control" formControlName = "password">
+                <div *ngIf="!form_pass.get('password')?.valid && form_pass.get('password')?.touched" class="error-message">weak password, please try again.</div>
+            </div>
+            <button type="submit" [disabled] = "!form_pass.valid">Save password</button>
+        </form>
+    </div>
+</div>

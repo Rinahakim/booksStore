@@ -1,0 +1,27 @@
+<div class="header">Book Store</div>
+<div class="align-center">
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit) = onSubmit() class="form">
+            <div *ngIf="isFoundInUsers" class="message">this user is connacted</div>
+            <div>
+                <label for="Email">Email:</label>
+                <input type="text" id = "Email" class="form-control" formControlName= "Email">
+                <div *ngIf="!this.form.get('Email')?.valid && this.form.get('Email')?.touched" class="error-message">enter your email</div>
+            </div>
+            <div>
+                <label for="password">password:</label>
+                <input type="password" id = "password" class="form-control" formControlName = "password">
+                <div *ngIf="!form.get('password')?.valid && form.get('password')?.touched" class="error-message">weak password, please try again.</div>
+            </div>
+            <div>
+                <label for="repeatPassword">Repeat the password:</label>
+                <input type="password" id = "repeatPassword" class="form-control" formControlName = "repeatPassword">
+                <div *ngIf="form.errors?.['mismatch'] && form.get('repeatPassword')?.touched"  class="error-message">passwords do not match.</div>
+            </div>
+            <div class="flex-row">
+                <button type="submit" [disabled] = "!form.valid">Sign-up</button>
+            </div>
+        </form>
+        <div class="log-in-link" (click)="onClickLogin()">Log-in</div>
+    </div>    
+</div>

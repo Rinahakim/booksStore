@@ -1,0 +1,241 @@
+:host{
+    width: 100vw;
+    height: 100vh;
+}
+.header{
+    height: 4rem;
+    background-color: #007bffc3;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 10;
+}
+.header >:first-child{
+    margin-left: 10px;
+}
+.link{
+    font-size: 20px;
+    text-decoration: underline;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.img{
+    width: 2rem; 
+    height: 2rem; 
+    object-fit: contain;
+    cursor: pointer;
+}
+.books-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 10%;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.book-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    gap: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+}
+.book-img{
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+.book-container >:last-child{
+    width: 90%;
+    background-color: #4067a1;
+    color: #fff;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.point{
+    max-height: 5px;
+}
+.choice-btn{
+    display: flex;
+    flex-direction: column; 
+    z-index: 5;
+    font-size: 25px;
+    height: 35px; 
+    position: absolute;
+    left: 90%;
+    top: 0%;
+}
+
+.pop-up-choice{
+    background-color: #fff;
+    height: auto;
+    width: auto;
+    position: absolute;
+    z-index: 2;
+    padding: 1px;
+    top: 5%;
+    right: 5%;
+    border: 2px solid black;
+    width: 50px;
+    height: 53px;
+    text-align: center;
+    border-radius: 10px;
+}
+.x{
+    font-size: 15px;
+    text-align: end;
+}
+.option{
+    border: 1px solid black;
+    width: 100%;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+.option:hover{
+    background-color: #4067a1;
+    color: #fff;
+}
+
+.edit-modal{
+    height: auto;
+    width: 40%;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    z-index: 4;
+    background-color: #4067a1;
+    border: 2px solid palevioletred;
+}
+.background{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(65, 62, 62, 0.744);
+    z-index: 11;
+    position: fixed;
+    top: 0;
+}
+.edit-field{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.edit-modal>:first-child{
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+}
+#description{
+    height: 100px;
+    border-radius: 10px;
+    overflow-y: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: start;
+    width: 70%;
+}
+input{
+    border-radius: 10px;
+    width: 70%;
+}
+.search-container>:last-child::placeholder{
+    padding: 5px;
+}
+.edit-modal>:last-child{
+    margin-left: 70%;
+    height: 40px;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    background-color:#fff;
+    cursor: pointer;
+}
+.edit-modal>:last-child:hover{
+    background-color: rgba(190, 234, 145, 0.824);
+}
+.header-modal{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.header-modal >:last-child{
+    cursor: pointer;
+    border-radius: 5px;
+}
+.header-modal >:last-child:hover{
+    background-color: rgba(190, 234, 145, 0.824);
+}
+
+.add-book-btn{
+    height: 50%;
+    background-color: #94b7eb;
+    color: #fff;
+    border:2px solid #fff;
+    cursor: pointer;
+}
+
+.search-container{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pagination{
+    position: fixed;
+    bottom: 0;
+}
+
+@media(max-width: 550px){
+    .header{
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .books-container{
+        justify-content: center;
+        align-items: center;
+        margin-top: 15%;
+    }
+    .header div{
+        font-size: 15px;
+    }
+    .add-book-btn{
+        margin-right: 5px;
+    }
+    .edit-modal{
+        width: auto;
+    }
+    .edit-modal>:last-child{
+        width: auto;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+@media(max-width: 850px){
+    .edit-modal>:last-child{
+        width: auto;
+        margin-left: 60%;
+        /* margin-right: 20%; */
+    }
+}

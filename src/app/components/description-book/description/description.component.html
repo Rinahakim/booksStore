@@ -1,0 +1,14 @@
+<div class="header">
+    <div>Book Store</div>
+    <div *ngIf="!isLoggedIn" class="link" (click)="onClickToLogin()">
+        Log-in/Sign-up
+        <img src="https://vignette.wikia.nocookie.net/panzoid/images/0/01/AccountLogo.png/revision/latest?cb=20170205042726" class="img">
+    </div>
+    <div *ngIf="isLoggedIn" class="link">
+        <button (click)="onClickHome()">HOME</button>
+    </div>
+</div>
+<div class="container">
+    <div class="book-name">{{book.name}}</div>
+    <div class="description">{{book.description}}</div>
+</div>

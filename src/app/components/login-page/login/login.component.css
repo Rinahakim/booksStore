@@ -1,0 +1,64 @@
+:host{
+    width: 100vw;
+    height: 100vh;
+}
+.header{
+    height: 4rem;
+    background-color: #007bffc3;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+}
+.align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+.container{
+    border: 2px solid #007bffc3;
+    width: 40%;
+    height: auto;
+    padding: 10px;
+}
+input{
+    border-top: none ;
+    border-left: none;
+    border-right: none;
+}
+.link-sign-up{
+    color: #007bffc3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+    background-color: #007bffc3;
+    color: #fff;
+    height: 30px;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+label{
+    display: block;
+}
+.message{
+    background-color: rgba(100, 99, 99, 0.874);
+    color: #fff;
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+.error-message{
+    color: red;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 450px){
+    .container{
+        width: auto;
+    }
+}

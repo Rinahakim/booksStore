@@ -1,0 +1,32 @@
+<div class="header">
+    <div>My Cart</div>
+    <button (click)="onClickHome()">HOME</button>
+</div>
+
+<div *ngIf="!isThereBooksInCart" class="message">There are no books in the cart.</div>
+<div *ngFor="let cartItem of listItemsInCart, let i = index" class="books-container">
+    <div class="book-container">
+        <img [src]="cartItem.book.img" class="book-img">
+        <div class="details">
+            <div class="book-name">{{cartItem.book.name}}</div>
+            <div>author: {{cartItem.book.author}}</div>
+            <div class="book-price">Price: {{cartItem.book.price}}</div>
+            <div>quantity: x{{cartItem.quantity}} </div>
+            <div class="quantity-btn">
+                <button (click)="onClickAdd(i)">+</button>
+                <button (click)="onClickDown(i)">-</button>
+            </div>
+        </div>
+        <button (click)="RemoveItem(i)" class="remove-btn">Remove</button>
+    </div>
+</div>
+<div *ngIf="isThereBooksInCart" class="total-pay">
+    <div>Total Payment: {{totalPay}}</div>
+    <button (click)="onClickPayment()">for payment</button>
+</div>
+<div class="background" *ngIf="isPay">
+    <div class="pop-up">
+        <button (click)="onClickXPopUp()">X</button>
+        <div>The payment was made successfully, thank you!</div>
+    </div>
+</div>
